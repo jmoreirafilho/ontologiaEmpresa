@@ -1,0 +1,109 @@
+Prefix(:=<http://www.semanticweb.org/airton-filho/ontologies/2018/4/untitled-ontology-3#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/airton-filho/ontologies/2018/4/untitled-ontology-3>
+
+Declaration(Class(:Cargo))
+Declaration(Class(:Pessoa))
+Declaration(Class(:Setor))
+Declaration(ObjectProperty(:pertence_a))
+Declaration(ObjectProperty(:possui))
+Declaration(NamedIndividual(:Cargo_1))
+Declaration(NamedIndividual(:Cargo_2))
+Declaration(NamedIndividual(:Cargo_3))
+Declaration(NamedIndividual(:Pessoa_chefe_1))
+Declaration(NamedIndividual(:Pessoa_chefe_2))
+Declaration(NamedIndividual(:Pessoa_dono))
+Declaration(NamedIndividual(:Pessoa_funcionario_1))
+Declaration(NamedIndividual(:Pessoa_funcionario_2))
+Declaration(NamedIndividual(:Pessoa_funcionario_3))
+Declaration(NamedIndividual(:Pessoa_funcionario_4))
+Declaration(NamedIndividual(:Setor_1))
+############################
+#   Object Properties
+############################
+
+# Object Property: :pertence_a (:pertence_a)
+
+InverseObjectProperties(:pertence_a :possui)
+ObjectPropertyDomain(:pertence_a ObjectUnionOf(:Cargo :Pessoa))
+ObjectPropertyRange(:pertence_a ObjectUnionOf(:Cargo :Setor))
+
+# Object Property: :possui (:possui)
+
+ObjectPropertyDomain(:possui ObjectUnionOf(:Cargo :Setor))
+ObjectPropertyRange(:possui ObjectUnionOf(:Cargo :Pessoa))
+
+
+############################
+#   Classes
+############################
+
+# Class: :Cargo (:Cargo)
+
+EquivalentClasses(:Cargo ObjectIntersectionOf(ObjectSomeValuesFrom(:pertence_a :Setor) ObjectSomeValuesFrom(:possui :Pessoa)))
+
+# Class: :Pessoa (:Pessoa)
+
+EquivalentClasses(:Pessoa ObjectSomeValuesFrom(:pertence_a :Cargo))
+
+# Class: :Setor (:Setor)
+
+EquivalentClasses(:Setor ObjectSomeValuesFrom(:possui :Cargo))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Cargo_1 (:Cargo_1)
+
+ClassAssertion(:Cargo :Cargo_1)
+
+# Individual: :Cargo_2 (:Cargo_2)
+
+ClassAssertion(:Cargo :Cargo_2)
+
+# Individual: :Cargo_3 (:Cargo_3)
+
+ClassAssertion(:Cargo :Cargo_3)
+
+# Individual: :Pessoa_chefe_1 (:Pessoa_chefe_1)
+
+ClassAssertion(:Pessoa :Pessoa_chefe_1)
+
+# Individual: :Pessoa_chefe_2 (:Pessoa_chefe_2)
+
+ClassAssertion(:Pessoa :Pessoa_chefe_2)
+
+# Individual: :Pessoa_dono (:Pessoa_dono)
+
+ClassAssertion(:Pessoa :Pessoa_dono)
+
+# Individual: :Pessoa_funcionario_1 (:Pessoa_funcionario_1)
+
+ClassAssertion(:Pessoa :Pessoa_funcionario_1)
+
+# Individual: :Pessoa_funcionario_2 (:Pessoa_funcionario_2)
+
+ClassAssertion(:Pessoa :Pessoa_funcionario_2)
+
+# Individual: :Pessoa_funcionario_3 (:Pessoa_funcionario_3)
+
+ClassAssertion(:Pessoa :Pessoa_funcionario_3)
+
+# Individual: :Pessoa_funcionario_4 (:Pessoa_funcionario_4)
+
+ClassAssertion(:Pessoa :Pessoa_funcionario_4)
+
+# Individual: :Setor_1 (:Setor_1)
+
+ClassAssertion(:Setor :Setor_1)
+
+
+)
